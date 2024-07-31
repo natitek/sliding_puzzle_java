@@ -21,10 +21,12 @@ static void makebuttons(){
 
     game.panel.setBounds(0,0,1000,1000);
     game.panel.setVisible(true);
+    int counter = 0;
     for(int i= 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             
-        button but = new button(i * game.boxsize, j * game.boxsize, i + j);
+        button but = new button(i * game.boxsize, j * game.boxsize, counter);
+        counter++;
         
         
     }}
@@ -43,15 +45,24 @@ class button{
     button(int x,int y, int position){
         b = new JButton();
         l = new JLabel(String.valueOf(position));
+       
+        l.setBounds(0,0,15,15);
         b.add(l);
         b.setBounds(x,y,game.boxsize,game.boxsize);
-        
-        // arrayButtons[position] = b;
+        b.setBackground(Color.BLUE);
+        b.setOpaque(true);
         if(position == 7){
-            b.setForeground(Color.RED);
+            l.setBounds(0,0,15,15);
+            b.add(l);
+            
             b.setBackground(Color.RED);
+            b.setOpaque(true);
             
         }
+    
+        
+        // arrayButtons[position] = b;
+       
         game.panel.add(b);
        
         game.frame.add(game.panel);
